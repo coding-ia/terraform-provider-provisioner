@@ -8,8 +8,9 @@ import (
 func TestAccProvisionResource_Create(t *testing.T) {
 	config := `
 provider "provisioner" {
-  sns_topic = "arn:aws:sns:us-east-2:809674927168:PublishDNS"
-  region    = "us-east-2"
+  sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
+  sns_endpoint_url = "http://localhost:4566"
+  region           = "us-east-2"
 }
 
 resource "provisioner_provision" "test" {
@@ -32,8 +33,9 @@ resource "provisioner_provision" "test" {
 func TestAccProvisionResource_Update(t *testing.T) {
 	config := `
 provider "provisioner" {
-  sns_topic = "arn:aws:sns:us-east-2:809674927168:PublishDNS"
-  region    = "us-east-2"
+  sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
+  sns_endpoint_url = "http://localhost:4566"
+  region           = "us-east-2"
 }
 
 resource "provisioner_provision" "test" {
@@ -45,8 +47,9 @@ resource "provisioner_provision" "test" {
 
 	config_update := `
 provider "provisioner" {
-  sns_topic = "arn:aws:sns:us-east-2:809674927168:PublishDNS"
-  region    = "us-east-2"
+  sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
+  sns_endpoint_url = "http://localhost:4566"
+  region           = "us-east-2"
 }
 
 resource "provisioner_provision" "test" {

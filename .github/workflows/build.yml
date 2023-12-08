@@ -59,8 +59,14 @@ jobs:
 
       - run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
+      - name: Start localstack
+        run: make localstack-start
+
       - name: Run acceptance tests
         run: make testacc
+        
+      - name: Stop localstack
+        run: make localstack-stop
 
   fmtcheck:
     runs-on: ubuntu-latest

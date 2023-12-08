@@ -16,13 +16,15 @@ type InstanceProvisioner struct {
 }
 
 type InstanceProvisionerModel struct {
-	SNSTopic types.String `tfsdk:"sns_topic"`
-	Region   types.String `tfsdk:"region"`
+	SNSTopic       types.String `tfsdk:"sns_topic"`
+	SNSEndpointURL types.String `tfsdk:"sns_endpoint_url"`
+	Region         types.String `tfsdk:"region"`
 }
 
 type InstanceProvisionerConfig struct {
-	SNSTopic string
-	Region   string
+	SNSTopic       string
+	SNSEndpointURL string
+	Region         string
 }
 
 func (i *InstanceProvisioner) Metadata(ctx context.Context, request provider.MetadataRequest, response *provider.MetadataResponse) {
@@ -38,6 +40,10 @@ func (i *InstanceProvisioner) Schema(ctx context.Context, request provider.Schem
 				MarkdownDescription: "SNS topic to send provisioning events to.",
 				Required:            true,
 			},
+			"sns_endpoint_url": schema.StringAttribute{
+				MarkdownDescription: "SNS endpoint URL.",
+				Optional:            true,
+			},
 			"region": schema.StringAttribute{
 				MarkdownDescription: "AWS region.",
 				Optional:            true,
@@ -52,8 +58,9 @@ func (i *InstanceProvisioner) Configure(ctx context.Context, request provider.Co
 	response.Diagnostics.Append(request.Config.Get(ctx, &data)...)
 
 	config := &InstanceProvisionerConfig{
-		SNSTopic: data.SNSTopic.ValueString(),
-		Region:   data.Region.ValueString(),
+		SNSTopic:       data.SNSTopic.ValueString(),
+		SNSEndpointURL: data.SNSEndpointURL.ValueString(),
+		Region:         data.Region.ValueString(),
 	}
 
 	response.ResourceData = config
