@@ -10,7 +10,7 @@ func TestAccProvisionResource_Create(t *testing.T) {
 provider "provisioner" {
   sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
   sns_endpoint_url = "http://localhost:4566"
-  region           = "us-east-2"
+  region           = "us-east-1"
 }
 
 resource "provisioner_provision" "test" {
@@ -35,7 +35,7 @@ func TestAccProvisionResource_Update(t *testing.T) {
 provider "provisioner" {
   sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
   sns_endpoint_url = "http://localhost:4566"
-  region           = "us-east-2"
+  region           = "us-east-1"
 }
 
 resource "provisioner_provision" "test" {
@@ -49,7 +49,7 @@ resource "provisioner_provision" "test" {
 provider "provisioner" {
   sns_topic        = "arn:aws:sns:us-east-1:000000000000:go-test-topic"
   sns_endpoint_url = "http://localhost:4566"
-  region           = "us-east-2"
+  region           = "us-east-1"
 }
 
 resource "provisioner_provision" "test" {
