@@ -21,10 +21,10 @@ testacc:
 	TF_ACC=1 go test ./internal/provider -v $(TESTARGS) -timeout 120m -count=1
 
 localstack-start:
-        @bash scripts/start-localstack.sh
+	@bash scripts/start-localstack.sh
 		
 localstack-stop:
-        @bash scripts/stop-localstack.sh
+	@bash scripts/stop-localstack.sh
 
 fmt:
 	gofmt -w $(GOFMT_FILES)
