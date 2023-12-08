@@ -9,4 +9,4 @@ export AWS_SESSION_TOKEN=test
 mkdir ~/.aws && cp ./scripts/fake.aws ~/.aws/credentials
 docker-compose -f ./scripts/docker-compose.yaml up -d
 sleep 30s
-aws --endpoint-url=http://localhost:4566 sns create-topic --name go-test-topic
+aws --endpoint-url=http://localhost:4566 sns create-topic --name go-test-topic --region us-east-1
