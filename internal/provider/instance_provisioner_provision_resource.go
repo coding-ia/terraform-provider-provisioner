@@ -137,7 +137,12 @@ func (p *ProvisionResource) Read(ctx context.Context, request resource.ReadReque
 
 func (p *ProvisionResource) Update(ctx context.Context, request resource.UpdateRequest, response *resource.UpdateResponse) {
 	var data *ProvisionResourceModel
+	var state *ProvisionResourceModel
+
 	response.Diagnostics.Append(request.Plan.Get(ctx, &data)...)
+	response.Diagnostics.Append(request.State.Get(ctx, &state)...)
+
+	data.Id = state.Id
 
 	message := &ProvisionerMessage{
 		ID:         data.Id.ValueString(),
