@@ -39,6 +39,9 @@ func (p *ProvisionResource) Configure(ctx context.Context, request resource.Conf
 	if data.Region != "" {
 		awsConfig = aws.NewConfig().WithRegion(data.Region)
 	}
+	if data.SNSEndpointURL != "" {
+		awsConfig.Endpoint = aws.String(data.SNSEndpointURL)
+	}
 	sess := session.Must(session.NewSession())
 	snsClient := sns.New(sess, awsConfig)
 
