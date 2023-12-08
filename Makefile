@@ -20,12 +20,6 @@ test:
 testacc:
 	TF_ACC=1 go test ./internal/provider -v $(TESTARGS) -timeout 120m -count=1
 
-httpd-start:
-	@bash scripts/start-httpd.sh
-
-httpd-stop:
-	@bash scripts/stop-httpd.sh
-
 fmt:
 	gofmt -w $(GOFMT_FILES)
 
