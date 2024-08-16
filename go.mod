@@ -3,7 +3,7 @@ module instance-provisioning-provider
 go 1.21
 
 require (
-	github.com/aws/aws-sdk-go v1.48.15
+	github.com/aws/aws-sdk-go v1.55.5
 	github.com/hashicorp/go-uuid v1.0.3
 	github.com/hashicorp/terraform-plugin-framework v1.4.2
 	github.com/hashicorp/terraform-plugin-go v0.19.1
